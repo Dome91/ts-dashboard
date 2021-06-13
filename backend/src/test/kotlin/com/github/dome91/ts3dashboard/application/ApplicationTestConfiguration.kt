@@ -20,7 +20,7 @@ class ApplicationTestConfiguration(block: ApplicationTestConfiguration.() -> Uni
 
 fun Application.testModule() = run {
     (environment.config as MapApplicationConfig).apply {
-        put("teamspeakserver.address", "localhost")
+        put("teamspeakserver.address", System.getenv("TS_ADDRESS") ?: "localhost")
         put("teamspeakserver.admin", "serveradmin")
         put("teamspeakserver.password", "test")
         main()
