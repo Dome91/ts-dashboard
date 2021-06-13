@@ -1,0 +1,7 @@
+.idea
+backend/target
+backend/src/main/resources/public
+frontend/build
+frontend/node
+frontend/node_modules
+ts3dashboard.iml
