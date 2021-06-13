@@ -43,4 +43,4 @@ jobs:
           java-version: '11'
           distribution: 'adopt'
       - name: Test
-        run: TS_ADDRESS=teamspeak mvn test
+        run: mvn test
