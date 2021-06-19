@@ -1,8 +1,8 @@
 name: Main Workflow for TS3Dashboard
 on: [ push ]
 jobs:
-  test:
-    name: Test
+  main:
+    name: Test, Build and Publish
     runs-on: ubuntu-latest
     services:
       teamspeak:
@@ -41,24 +41,15 @@ jobs:
         with:
           java-version: '11'
           distribution: 'adopt'
+
       - name: Test
         run: mvn test
 
-  build-publish:
-    name: Build and Publish
-    needs:
-      - test
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-
-      - name: Set up JDK 11
-        uses: actions/setup-java@v2
-        with:
-          java-version: '11'
-          distribution: 'adopt'
       - name: Build
         run: mvn package -DskipTests
+
+      - name: Log into registry
+        run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
 
       - name: Publish
         run: docker push ghcr.io/dome91/ts3dashboard:latest
