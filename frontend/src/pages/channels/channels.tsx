@@ -1,6 +1,7 @@
 import {useChannels, useServers} from "../../hooks/team-speak-server-hooks";
-import {Card, Col, Container, ListGroup, Row} from "react-bootstrap";
+import {Card, Col, ListGroup} from "react-bootstrap";
 import {TeamSpeakChannel, TeamSpeakUser} from "../../model/team-speak-server";
+import FullHeightCenteredContainer from "./channels-styles";
 
 type ChannelCardUserEntryProps = {
     user: TeamSpeakUser
@@ -33,20 +34,16 @@ type ChannelCardsProps = {
 const ChannelCards = ({serverId}: ChannelCardsProps): JSX.Element => {
     const channels = useChannels(serverId)
     const channelCards = channels.map((channel, index) => <ChannelCard channel={channel} key={index}/>)
-    return <>
+    return <Col lg={3} md={3} sm={4} xs={6}>
         {channelCards}
-    </>
+    </Col>
 }
 
 const Channels = () => {
     const servers = useServers()
-    return <Container>
-        <Row>
-            <Col lg={2} md={3} sm={4} xs={6}>
-                {servers.length > 0 ? <ChannelCards serverId={servers[0].id}/> : <div/>}
-            </Col>
-        </Row>
-    </Container>
+    return <FullHeightCenteredContainer>
+        {servers.length > 0 ? <ChannelCards serverId={servers[0].id}/> : <div/>}
+    </FullHeightCenteredContainer>
 }
 
 export default Channels
