@@ -1,28 +1,8 @@
 name: Main Workflow for TS3Dashboard
 on: [ push ]
 jobs:
-  test-fronted:
-    name: Test Frontend
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [ 14.x ]
-    steps:
-      - uses: actions/checkout@v1
-
-      - name: Setup Node ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
-        with:
-          node-version: ${{ matrix.node-version }}
-
-      - name: Install dependencies
-        run: cd frontend && npm ci
-
-      - name: Test
-        run: cd frontend && npm test -- --watchAll=false
-
-  test-backend:
-    name: Test Backend
+  test:
+    name: Test
     runs-on: ubuntu-latest
     services:
       teamspeak:

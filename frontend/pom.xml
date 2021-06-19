@@ -28,7 +28,7 @@
                         <goals>
                             <goal>install-node-and-npm</goal>
                         </goals>
-                        <phase>generate-resources</phase>
+                        <phase>compile</phase>
                     </execution>
                     <execution>
                         <id>npm install</id>
@@ -36,7 +36,18 @@
                             <goal>npm</goal>
                         </goals>
 
-                        <phase>generate-resources</phase>
+                        <phase>compile</phase>
+                    </execution>
+                    <execution>
+                        <id>npm test</id>
+                        <goals>
+                            <goal>npm</goal>
+                        </goals>
+
+                        <configuration>
+                            <arguments>test -- --watchAll=false</arguments>
+                        </configuration>
+                        <phase>test</phase>
                     </execution>
                     <execution>
                         <id>npm build</id>
@@ -44,10 +55,11 @@
                             <goal>npm</goal>
                         </goals>
 
-                        <phase>generate-resources</phase>
                         <configuration>
                             <arguments>run build</arguments>
                         </configuration>
+
+                        <phase>package</phase>
                     </execution>
                 </executions>
                 <configuration>
