@@ -12,11 +12,11 @@ import org.junit.jupiter.api.Test
 internal class TeamSpeakServerApplicationServiceImplTest {
 
     @Test
-    fun `validates TeamSpeak server with correct config`(): Unit = withTestApplication(Application::testModule) {
+    fun `add TeamSpeak server with correct config`(): Unit = withTestApplication(Application::testModule) {
         ApplicationTestConfiguration {
             val testServer = teamSpeakServer {}
             val service = TeamSpeakServerApplicationServiceImpl()
-            service.validate(testServer)
+            service.add(testServer)
         }
     }
 

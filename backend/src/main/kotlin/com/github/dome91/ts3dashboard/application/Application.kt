@@ -10,6 +10,7 @@ import io.ktor.routing.*
 import io.ktor.serialization.*
 import io.ktor.server.netty.*
 import org.koin.ktor.ext.Koin
+import org.koin.ktor.ext.KoinApplicationStopPreparing
 import org.koin.ktor.ext.inject
 import org.slf4j.event.Level
 
@@ -18,6 +19,7 @@ fun main(args: Array<String>): Unit = EngineMain.main(args)
 fun Application.main() {
     registerPlugins()
     registerRoutes()
+    registerEventListener()
     initialize()
 }
 
@@ -40,6 +42,7 @@ fun Application.registerPlugins() {
     install(SinglePageApplication) {
         folderPath = "public"
     }
+
 }
 
 fun Application.registerRoutes() {
@@ -49,4 +52,15 @@ fun Application.registerRoutes() {
 fun Application.initialize() {
     val createTeamSpeakServerInitializer: CreateTeamSpeakServerInitializer by inject()
     createTeamSpeakServerInitializer.initialize()
+}
+
+fun Application.registerEventListener() {
+    environment.monitor.subscribe(KoinApplicationStopPreparing) {
+        val listener: ApplicationStoppingEventListener by inject()
+        listener.stop()
+    }
+}
+
+interface ApplicationStoppingEventListener {
+    fun stop()
 }

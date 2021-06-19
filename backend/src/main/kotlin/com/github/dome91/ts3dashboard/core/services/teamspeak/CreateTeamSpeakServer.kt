@@ -21,7 +21,7 @@ class CreateTeamSpeakServer(
 
     operator fun invoke(command: CreateTeamSpeakServerCommand) {
         val teamSpeakServer = teamSpeakServerFactory.build(command.address, command.teamSpeakAdmin, command.teamSpeakAdminPassword)
-        teamSpeakServerApplicationService.validate(teamSpeakServer)
+        teamSpeakServerApplicationService.add(teamSpeakServer)
         teamSpeakServerRepository.save(teamSpeakServer)
     }
 

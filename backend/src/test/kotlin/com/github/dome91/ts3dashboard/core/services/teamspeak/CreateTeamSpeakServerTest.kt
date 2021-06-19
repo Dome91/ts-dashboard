@@ -21,7 +21,7 @@ internal class CreateTeamSpeakServerTest {
             server.admin shouldBe "admin"
             server.password shouldBe "pass"
 
-            verify() { teamSpeakServerApplicationService.validate(any()) }
+            verify() { teamSpeakServerApplicationService.add(any()) }
         }
     }
 

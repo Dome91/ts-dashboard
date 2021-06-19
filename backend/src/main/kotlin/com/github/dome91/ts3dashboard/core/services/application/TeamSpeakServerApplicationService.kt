@@ -5,7 +5,7 @@ import com.github.dome91.ts3dashboard.core.model.TeamSpeakServer
 
 interface TeamSpeakServerApplicationService {
 
-    fun validate(teamSpeakServer: TeamSpeakServer)
+    fun add(teamSpeakServer: TeamSpeakServer)
     fun getChannels(teamSpeakServer: TeamSpeakServer): TeamSpeakChannels
 
 }
