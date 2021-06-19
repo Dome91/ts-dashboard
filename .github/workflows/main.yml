@@ -46,6 +46,8 @@ jobs:
 
   build-publish:
     name: Build and Publish
+    needs:
+      - test
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
