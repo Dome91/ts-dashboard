@@ -62,6 +62,7 @@ class TeamSpeakServerBuilder private constructor(
             val builder = TeamSpeakServerBuilder(idGenerator.generate())
             block(builder)
             return builder.build().also {
+                teamSpeakServerApplicationService.add(it)
                 teamSpeakServerRepository.save(it)
             }
         }

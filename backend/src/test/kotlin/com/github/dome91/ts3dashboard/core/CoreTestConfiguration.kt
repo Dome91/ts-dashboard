@@ -21,7 +21,7 @@ class CoreTestConfiguration(block: CoreTestConfiguration.() -> Unit) : TestConfi
     private val teamSpeakServerFactory = TeamSpeakServerFactory(idGenerator)
 
     // Application Services
-    val teamSpeakServerApplicationService = mockk<TeamSpeakServerApplicationService>(relaxUnitFun = true)
+    override val teamSpeakServerApplicationService = mockk<TeamSpeakServerApplicationService>(relaxUnitFun = true)
 
     // Domain Services
     val createTeamSpeakServer = CreateTeamSpeakServer(teamSpeakServerFactory, teamSpeakServerApplicationService, teamSpeakServerRepository)

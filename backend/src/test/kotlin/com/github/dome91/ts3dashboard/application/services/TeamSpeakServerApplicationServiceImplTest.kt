@@ -15,8 +15,7 @@ internal class TeamSpeakServerApplicationServiceImplTest {
     fun `add TeamSpeak server with correct config`(): Unit = withTestApplication(Application::testModule) {
         ApplicationTestConfiguration {
             val testServer = teamSpeakServer {}
-            val service = TeamSpeakServerApplicationServiceImpl()
-            service.add(testServer)
+            teamSpeakServerApplicationService.add(testServer)
         }
     }
 
@@ -24,8 +23,7 @@ internal class TeamSpeakServerApplicationServiceImplTest {
     fun `queries channels with users in them`(): Unit = withTestApplication(Application::testModule) {
         ApplicationTestConfiguration {
             val testServer = teamSpeakServer {}
-            val service = TeamSpeakServerApplicationServiceImpl()
-            val channels = service.getChannels(testServer)
+            val channels = teamSpeakServerApplicationService.getChannels(testServer)
             channels.channels shouldHaveSize 1
             channels.channels[0].name shouldBe "Default Channel"
             channels.channels[0].users shouldHaveSize 0
