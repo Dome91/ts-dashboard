@@ -1,8 +1,8 @@
-package com.github.dome91.ts3dashboard.core.services.teamspeak
+package com.github.dome91.tsdashboard.core.services.teamspeak
 
-import com.github.dome91.ts3dashboard.core.CoreTestConfiguration
-import com.github.dome91.ts3dashboard.dsl.TeamSpeakChannelsBuilder.Companion.teamSpeakChannels
-import com.github.dome91.ts3dashboard.dsl.TeamSpeakServerBuilder.Companion.teamSpeakServer
+import com.github.dome91.tsdashboard.core.CoreTestConfiguration
+import com.github.dome91.tsdashboard.dsl.TeamSpeakChannelsBuilder.Companion.teamSpeakChannels
+import com.github.dome91.tsdashboard.dsl.TeamSpeakServerBuilder.Companion.teamSpeakServer
 import io.kotest.matchers.collections.shouldContainAll
 import io.kotest.matchers.collections.shouldHaveSize
 import io.mockk.every

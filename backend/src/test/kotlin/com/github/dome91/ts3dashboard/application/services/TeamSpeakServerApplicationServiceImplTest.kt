@@ -1,8 +1,8 @@
-package com.github.dome91.ts3dashboard.application.services
+package com.github.dome91.tsdashboard.application.services
 
-import com.github.dome91.ts3dashboard.application.ApplicationTestConfiguration
-import com.github.dome91.ts3dashboard.application.testModule
-import com.github.dome91.ts3dashboard.dsl.TeamSpeakServerBuilder.Companion.teamSpeakServer
+import com.github.dome91.tsdashboard.application.ApplicationTestConfiguration
+import com.github.dome91.tsdashboard.application.testModule
+import com.github.dome91.tsdashboard.dsl.TeamSpeakServerBuilder.Companion.teamSpeakServer
 import io.kotest.matchers.collections.shouldHaveSize
 import io.kotest.matchers.shouldBe
 import io.ktor.application.*

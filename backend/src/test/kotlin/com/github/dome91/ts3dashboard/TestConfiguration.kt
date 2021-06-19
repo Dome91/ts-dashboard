@@ -1,8 +1,8 @@
-package com.github.dome91.ts3dashboard
+package com.github.dome91.tsdashboard
 
-import com.github.dome91.ts3dashboard.core.factories.IDGenerator
-import com.github.dome91.ts3dashboard.core.repositories.TeamSpeakServerRepository
-import com.github.dome91.ts3dashboard.core.services.application.TeamSpeakServerApplicationService
+import com.github.dome91.tsdashboard.core.factories.IDGenerator
+import com.github.dome91.tsdashboard.core.repositories.TeamSpeakServerRepository
+import com.github.dome91.tsdashboard.core.services.application.TeamSpeakServerApplicationService
 
 interface TestConfiguration {
 

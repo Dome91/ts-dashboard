@@ -1,6 +1,6 @@
-package com.github.dome91.ts3dashboard.core.services.teamspeak
+package com.github.dome91.tsdashboard.core.services.teamspeak
 
-import com.github.dome91.ts3dashboard.core.CoreTestConfiguration
+import com.github.dome91.tsdashboard.core.CoreTestConfiguration
 import io.kotest.matchers.collections.shouldHaveSize
 import io.kotest.matchers.shouldBe
 import io.mockk.verify

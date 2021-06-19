@@ -1,13 +1,13 @@
-package com.github.dome91.ts3dashboard.core
+package com.github.dome91.tsdashboard.core
 
-import com.github.dome91.ts3dashboard.TestConfiguration
-import com.github.dome91.ts3dashboard.application.repositories.InMemoryTeamSpeakServerRepository
-import com.github.dome91.ts3dashboard.core.factories.IDGenerator
-import com.github.dome91.ts3dashboard.core.factories.TeamSpeakServerFactory
-import com.github.dome91.ts3dashboard.core.services.application.TeamSpeakServerApplicationService
-import com.github.dome91.ts3dashboard.core.services.teamspeak.CreateTeamSpeakServer
-import com.github.dome91.ts3dashboard.core.services.teamspeak.GetTeamSpeakChannels
-import com.github.dome91.ts3dashboard.core.services.teamspeak.GetTeamSpeakServers
+import com.github.dome91.tsdashboard.TestConfiguration
+import com.github.dome91.tsdashboard.application.repositories.InMemoryTeamSpeakServerRepository
+import com.github.dome91.tsdashboard.core.factories.IDGenerator
+import com.github.dome91.tsdashboard.core.factories.TeamSpeakServerFactory
+import com.github.dome91.tsdashboard.core.services.application.TeamSpeakServerApplicationService
+import com.github.dome91.tsdashboard.core.services.teamspeak.CreateTeamSpeakServer
+import com.github.dome91.tsdashboard.core.services.teamspeak.GetTeamSpeakChannels
+import com.github.dome91.tsdashboard.core.services.teamspeak.GetTeamSpeakServers
 import io.mockk.mockk
 import java.util.*
 

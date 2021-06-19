@@ -1,9 +1,9 @@
-package com.github.dome91.ts3dashboard.application.web
+package com.github.dome91.tsdashboard.application.web
 
-import com.github.dome91.ts3dashboard.application.ApplicationTestConfiguration
-import com.github.dome91.ts3dashboard.application.testModule
-import com.github.dome91.ts3dashboard.core.factories.ID
-import com.github.dome91.ts3dashboard.dsl.TeamSpeakServerBuilder.Companion.teamSpeakServer
+import com.github.dome91.tsdashboard.application.ApplicationTestConfiguration
+import com.github.dome91.tsdashboard.application.testModule
+import com.github.dome91.tsdashboard.core.factories.ID
+import com.github.dome91.tsdashboard.dsl.TeamSpeakServerBuilder.Companion.teamSpeakServer
 import com.jayway.jsonpath.JsonPath.read
 import io.kotest.matchers.collections.shouldBeIn
 import io.kotest.matchers.collections.shouldHaveSize

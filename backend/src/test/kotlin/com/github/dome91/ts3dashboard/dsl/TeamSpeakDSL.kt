@@ -1,8 +1,8 @@
-package com.github.dome91.ts3dashboard.dsl
+package com.github.dome91.tsdashboard.dsl
 
-import com.github.dome91.ts3dashboard.TestConfiguration
-import com.github.dome91.ts3dashboard.core.factories.ID
-import com.github.dome91.ts3dashboard.core.model.*
+import com.github.dome91.tsdashboard.TestConfiguration
+import com.github.dome91.tsdashboard.core.factories.ID
+import com.github.dome91.tsdashboard.core.model.*
 
 class TeamSpeakUserBuilder private constructor(var name: String = "teamSpeakUser") {
     fun build() = TeamSpeakUser(name)
