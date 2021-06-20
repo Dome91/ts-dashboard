@@ -53,3 +53,18 @@ jobs:
 
       - name: Publish
         run: docker push ghcr.io/dome91/tsdashboard:latest
+
+      - name: Deploy
+        uses: dawidd6/action-ansible-playbook@v2
+        env:
+          TS_ADDRESS: ${{secrets.HOST}}
+          TS_PASSWORD: ${{secrets.TS_PASSWORD}}
+        with:
+          playbook: deploy.yml
+          directory: infrastructure/ansible
+          key: ${{secrets.SSH_PRIVATE_KEY}}
+          inventory: |
+            [hosts]
+            ${{secrets.HOST}}
+            [hosts:vars]
+            ansible_python_interpreter=/usr/bin/python3

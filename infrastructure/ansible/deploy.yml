@@ -1,0 +1,35 @@
+---
+- name: Deploy
+  hosts: wolkenarchitekt.cc
+  vars:
+    container_name: tsdashboard
+    image_name: ghcr.io/dome91/tsdashboard:latest
+  tasks:
+    - name: Remove old container
+      docker_container:
+        name: "{{ container_name }}"
+        state: absent
+
+    - name: Remove old image
+      docker_image:
+        name: "{{ image_name }}"
+        state: absent
+
+    - name: Get new image
+      docker_image:
+        name: "{{ image_name }}"
+        source: pull
+        state: present
+
+    - name: Build container
+      docker_container:
+        name: "{{ container_name }}"
+        image: "{{ image_name }}"
+        state: started
+        env:
+          TS_ADDRESS: "{{ lookup('env', 'TS_ADDRESS') }}"
+          TS_PASSWORD: "{{ lookup('env', 'TS_PASSWORD') }}"
+        published_ports:
+          - 127.0.0.1:8080:8080
+
+
