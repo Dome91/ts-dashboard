@@ -1,14 +1,22 @@
 import {useChannels, useServers} from "../../hooks/team-speak-server-hooks";
 import {Card, Col, ListGroup, Row} from "react-bootstrap";
-import {TeamSpeakChannel, TeamSpeakUser} from "../../model/team-speak-server";
-import {FullHeightContainer} from "./channels-styles";
+import {TeamSpeakChannel} from "../../model/team-speak-server";
+import {EmptyChannelCard, FullHeightContainer} from "./channels-styles";
 
-type ChannelCardUserEntryProps = {
-    user: TeamSpeakUser
+type ChannelCardContentProps = {
+    channel: TeamSpeakChannel,
+    items: JSX.Element[]
 }
 
-const ChannelCardUserEntry = ({user}: ChannelCardUserEntryProps): JSX.Element => {
-    return <ListGroup.Item>{user.name}</ListGroup.Item>
+const ChannelCardContent = ({channel, items}: ChannelCardContentProps) => {
+    return <>
+        <Card.Header>
+            {channel.name}
+        </Card.Header>
+        <ListGroup variant={"flush"}>
+            {items.length > 0 ? items : <ListGroup.Item>Channel is empty.</ListGroup.Item>}
+        </ListGroup>
+    </>
 }
 
 type ChannelCardProps = {
@@ -16,15 +24,12 @@ type ChannelCardProps = {
 }
 
 const ChannelCard = ({channel}: ChannelCardProps): JSX.Element => {
-    const userEntries = channel.users.map((user, index) => <ChannelCardUserEntry user={user} key={index}/>)
-    return <Card className={"m-2"}>
-        <Card.Header>
-            {channel.name}
-        </Card.Header>
-        <ListGroup variant={"flush"}>
-            {userEntries.length > 0 ? userEntries : <ListGroup.Item>Channel is empty.</ListGroup.Item>}
-        </ListGroup>
-    </Card>
+    const items = channel.users.map((user) => <ListGroup.Item>{user.name}</ListGroup.Item>)
+    return <>
+        {items.length == 0
+            ? <EmptyChannelCard className={"m-2"}><ChannelCardContent channel={channel} items={items}/></EmptyChannelCard>
+            : <Card className={"m-2"}><ChannelCardContent channel={channel} items={items}/></Card>}
+    </>
 }
 
 type ChannelCardsProps = {
