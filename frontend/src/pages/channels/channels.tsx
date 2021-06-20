@@ -26,7 +26,7 @@ type ChannelCardProps = {
 const ChannelCard = ({channel}: ChannelCardProps): JSX.Element => {
     const items = channel.users.map((user) => <ListGroup.Item>{user.name}</ListGroup.Item>)
     return <>
-        {items.length == 0
+        {items.length === 0
             ? <EmptyChannelCard className={"m-2"}><ChannelCardContent channel={channel} items={items}/></EmptyChannelCard>
             : <Card className={"m-2"}><ChannelCardContent channel={channel} items={items}/></Card>}
     </>
