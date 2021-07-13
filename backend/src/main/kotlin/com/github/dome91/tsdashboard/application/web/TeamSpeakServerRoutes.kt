@@ -3,6 +3,7 @@ package com.github.dome91.tsdashboard.application.web
 import com.github.dome91.tsdashboard.core.services.teamspeak.GetTeamSpeakChannels
 import com.github.dome91.tsdashboard.core.services.teamspeak.GetTeamSpeakChannelsCommand
 import com.github.dome91.tsdashboard.core.services.teamspeak.GetTeamSpeakServers
+import com.github.dome91.tsdashboard.core.services.teamspeak.TeamSpeakChannelsSortedByOption
 import io.ktor.application.*
 import io.ktor.response.*
 import io.ktor.routing.*
@@ -30,9 +31,18 @@ fun Route.getChannels() {
     val getTeamSpeakChannels: GetTeamSpeakChannels by inject()
     val mapper: TeamSpeakServerDTOMapper by inject()
 
+    val resolveSortedByOption = { queryValue: String? ->
+        when (queryValue) {
+            "USERS_ASC" -> TeamSpeakChannelsSortedByOption.USERS_ASC
+            "USERS_DESC" -> TeamSpeakChannelsSortedByOption.USERS_DESC
+            else -> TeamSpeakChannelsSortedByOption.USERS_DESC
+        }
+    }
+
     get("/api/v1/teamspeakservers/{id}/channels") {
         call.parameters["id"]?.let {
-            val channels = getTeamSpeakChannels(GetTeamSpeakChannelsCommand(it))
+            val sortedByOption = resolveSortedByOption(call.request.queryParameters["sortedBy"])
+            val channels = getTeamSpeakChannels(GetTeamSpeakChannelsCommand(it, sortedByOption))
             val response = mapper.toResponse(channels)
             call.respond(response)
         }

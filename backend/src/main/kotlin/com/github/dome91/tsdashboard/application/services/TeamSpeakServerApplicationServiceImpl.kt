@@ -36,9 +36,9 @@ class TeamSpeakServerApplicationServiceImpl : TeamSpeakServerApplicationService,
         val clientsByChannel = query.api.clients.groupBy { it.channelId }
         val channels = query.api.channels
 
-        val emptyChannels = getEmptyChannels(channels, clientsByChannel)
         val nonEmptyChannels = getNonEmptyChannels(channels, clientsByChannel)
-        return TeamSpeakChannels(emptyChannels + nonEmptyChannels)
+        val emptyChannels = getEmptyChannels(channels, clientsByChannel)
+        return TeamSpeakChannels(nonEmptyChannels + emptyChannels)
     }
 
     private fun getNonEmptyChannels(channels: List<Channel>, clientsByChannel: Map<Int, List<Client>>): List<TeamSpeakChannel> {

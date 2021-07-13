@@ -1,6 +1,7 @@
 package com.github.dome91.tsdashboard.core.services.teamspeak
 
 import com.github.dome91.tsdashboard.core.CoreTestConfiguration
+import com.github.dome91.tsdashboard.core.services.teamspeak.TeamSpeakChannelsSortedByOption.*
 import com.github.dome91.tsdashboard.dsl.TeamSpeakChannelsBuilder.Companion.teamSpeakChannels
 import com.github.dome91.tsdashboard.dsl.TeamSpeakServerBuilder.Companion.teamSpeakServer
 import io.kotest.matchers.collections.shouldContainAll
@@ -21,7 +22,7 @@ internal class GetTeamSpeakChannelsTest {
             }
             every { teamSpeakServerApplicationService.getChannels(server) } returns channels
 
-            val returnedChannels = getTeamSpeakChannels(GetTeamSpeakChannelsCommand(server.id))
+            val returnedChannels = getTeamSpeakChannels(GetTeamSpeakChannelsCommand(server.id, USERS_DESC))
             returnedChannels.channels shouldHaveSize 2
             returnedChannels.channels shouldContainAll channels.channels
         }
