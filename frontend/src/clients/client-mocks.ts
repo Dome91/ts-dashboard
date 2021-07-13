@@ -12,5 +12,6 @@ export const servers: TeamSpeakServer[] = [server1]
 
 export const registerTeamSpeakServerMocks = (mock: MockAdapter) => {
     mock.onGet("/api/v1/teamspeakservers").reply(200, {servers})
-    mock.onGet(`/api/v1/teamspeakservers/${server1.id}/channels`).reply(200, {channels})
+    mock.onGet(`/api/v1/teamspeakservers/${server1.id}/channels?sortedBy=USERS_ASC`).reply(200, {channels: [channel2, channel1]})
+    mock.onGet(`/api/v1/teamspeakservers/${server1.id}/channels?sortedBy=USERS_DESC`).reply(200, {channels: [channel1, channel2]})
 }

@@ -9,6 +9,11 @@ type GetChannelsResponse = {
     channels: TeamSpeakChannel[]
 }
 
+export enum ChannelsSortedBy {
+    USERS_ASC = "USERS_ASC",
+    USERS_DESC = "USERS_DESC"
+}
+
 class TeamSpeakServerClient {
 
     getServers(): Promise<TeamSpeakServer[]> {
@@ -16,8 +21,8 @@ class TeamSpeakServerClient {
             .then(response => response.data.servers)
     }
 
-    getChannels(id: string): Promise<TeamSpeakChannel[]> {
-        return httpClient.get<GetChannelsResponse>(`/api/v1/teamspeakservers/${id}/channels`)
+    getChannels(id: string, sortedBy: ChannelsSortedBy): Promise<TeamSpeakChannel[]> {
+        return httpClient.get<GetChannelsResponse>(`/api/v1/teamspeakservers/${id}/channels?sortedBy=${sortedBy}`)
             .then(response => response.data.channels)
     }
 }
